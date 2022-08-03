@@ -4,7 +4,7 @@ import ShirtTwo from "./images/shirt-two.jpeg";
 import ShirtThree from "./images/Shirt-three.jpeg";
 import ShirtFour from "./images/Shirt-four.jpg";
 import { UserContext } from "../UserContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Shop = () => {
   const itemOne = { article: Shirt, price: 2.45 };
@@ -17,9 +17,15 @@ const Shop = () => {
 
   const {count, setCount} = useContext(UserContext);
 
-  const addToCart = () => {
-    setCount(count + 1 );
-    console.log("adding to cart" + count);
+  useEffect(() => {
+    console.log(count);
+  },[count])
+
+
+  const addToCart = (newItem) => {
+    setCount(prevState => {
+      return {...prevState, count: count.count + 1, items: count.items.concat(newItem)  };
+    });
   };
   return (
     <div>
@@ -32,8 +38,7 @@ const Shop = () => {
           {itemList.map((item, key) => (
             <ShopCard
               key={key}
-              item={item.article}
-              price={item.price}
+              item={item}
               addToCart={addToCart}
             />
           ))}
@@ -43,22 +48,22 @@ const Shop = () => {
   );
 };
 
-const ShopCard = ({ item, price, addToCart }) => {
+const ShopCard = ({ item, addToCart }) => {
   return (
     <div className="grid grid-cols-2 gap-3 ">
       <div className=" col-span-2 hover:scale-105">
-        <img src={item} alt="Item couldn't load"></img>
+        <img src={item.article} alt="Item couldn't load"></img>
       </div>
       <div>
         <button
           className="bg-gray-700 hover:bg-green-600 w-full rounded-3xl hover:rounded-xl
          transition-all duration-300 ease-linear cursor-pointer"
-          onClick={addToCart}
+          onClick={() => addToCart(item)}
         >
           Add to Cart
         </button>
       </div>
-      <div>${price.toFixed(2)}</div>
+      <div>${item.price.toFixed(2)}</div>
     </div>
   );
 };

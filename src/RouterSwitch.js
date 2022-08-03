@@ -7,7 +7,7 @@ import { UserContext } from "./UserContext";
 import { useState } from "react";
 
 const RouteSwitch = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState({count: 0, items:[]});
   return (
     <UserContext.Provider value={{ count, setCount }}>
       <BrowserRouter>

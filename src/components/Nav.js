@@ -56,7 +56,7 @@ const Nav = () => {
                 >
                   <BsCart2 size="30" />
                   <h3 className="text-gray-500 text-center  translate-x-4 -translate-y-4 text-base bg-green-500 rounded-full w-6 h-6 ">
-                    {count}
+                  {count.count}
                   </h3>
                 </h1>
               </Link>
