@@ -1,14 +1,14 @@
 
 import Nav from "./Nav";
 
-const Shop = () => {
+const Cart = () => {
   return (
     
     <div>
       <Nav />
-      MEOW
+      CART
     </div>
   );
 };
 
-export default Shop;
+export default Cart;

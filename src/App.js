@@ -5,6 +5,7 @@ function App() {
   return (
     <div className="text-black text-center font-extrabold">
       <Nav />
+      HOME
     </div>
   );
 }
