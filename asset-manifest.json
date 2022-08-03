@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/shopping-cart/static/css/main.0c4fa71f.css",
+    "main.js": "/shopping-cart/static/js/main.dc37758b.js",
+    "static/media/Shirt-three.jpeg": "/shopping-cart/static/media/Shirt-three.0000f920bc3780ad3861.jpeg",
+    "static/media/Shirt-four.jpg": "/shopping-cart/static/media/Shirt-four.284b2d5822c835a18e51.jpg",
+    "static/media/shirt-two.jpeg": "/shopping-cart/static/media/shirt-two.d5442565e6f99aa43c5f.jpeg",
+    "static/media/Grey-flask-shirt.jpeg": "/shopping-cart/static/media/Grey-flask-shirt.970ca2a67f6ccd182a18.jpeg",
+    "static/media/logo.png": "/shopping-cart/static/media/logo.e9427dc1ccb2d6cd3dad.png",
+    "index.html": "/shopping-cart/index.html",
+    "main.0c4fa71f.css.map": "/shopping-cart/static/css/main.0c4fa71f.css.map",
+    "main.dc37758b.js.map": "/shopping-cart/static/js/main.dc37758b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c4fa71f.css",
+    "static/js/main.dc37758b.js"
+  ]
+}
