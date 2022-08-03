@@ -10,7 +10,7 @@ const RouteSwitch = () => {
   const [count, setCount] = useState({count: 0, items:[]});
   return (
     <UserContext.Provider value={{ count, setCount }}>
-      <BrowserRouter>
+      <BrowserRouter basename='/shopping-cart/'>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/shop" exact element={<Shop />} />
