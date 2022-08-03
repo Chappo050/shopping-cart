@@ -4,7 +4,7 @@ import Nav from "./Nav";
 const About = () => {
   return (
     
-    <div>
+    <div className="text-white font-bold text-center">
       <Nav />
       ABOUT
     </div>
