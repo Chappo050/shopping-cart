@@ -5,42 +5,47 @@ import ShirtThree from "./images/Shirt-three.jpeg";
 import ShirtFour from "./images/Shirt-four.jpg";
 import { UserContext } from "../UserContext";
 import { useContext, useEffect } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import db from "../firebase";
 
 const Shop = () => {
-  const itemOne = { article: Shirt, price: 2.45 };
-  const itemTwo = { article: ShirtTwo, price: 4 };
-  const itemThree = { article: ShirtThree, price: 5 };
-  const itemFour = { article: ShirtFour, price: 6.5 };
+  const itemOne = { article: Shirt, price: 2.45, id:1 };
+  const itemTwo = { article: ShirtTwo, price: 4, id:2 };
+  const itemThree = { article: ShirtThree, price: 5, id:3 };
+  const itemFour = { article: ShirtFour, price: 6.5, id:4 };
 
   const itemList = [itemOne, itemTwo, itemThree, itemFour];
 
+  const { count, setCount } = useContext(UserContext);
 
-  const {count, setCount} = useContext(UserContext);
+  const handleEdit = async () => {
+    const docRef = doc(db, "users", "cart");
+    const payload = { count: count.count};
 
-  useEffect(() => {
-    console.log(count);
-  },[count])
-
+    setDoc(docRef, payload);
+  };
 
   const addToCart = (newItem) => {
-    setCount(prevState => {
-      return {...prevState, count: count.count + 1, items: count.items.concat(newItem)  };
+    setCount((prevState) => {
+      return {
+        ...prevState,
+        count: count.count + 1,
+        items: count.items.concat(newItem),
+      };
     });
+    handleEdit();
   };
+
   return (
     <div>
-      <Nav  />
+      <Nav />
       <div className="text-white font-bold text-center m-24 text-2xl">
         WELCOME TO OUR SHOP! PLEASE HAVE A FROLIC!
         <br />
         <br />
         <div className="grid grid-cols-4 gap-20 h-auto w-auto">
           {itemList.map((item, key) => (
-            <ShopCard
-              key={key}
-              item={item}
-              addToCart={addToCart}
-            />
+            <ShopCard key={key} item={item} addToCart={addToCart} />
           ))}
         </div>
       </div>

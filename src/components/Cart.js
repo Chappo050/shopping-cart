@@ -1,10 +1,13 @@
 import Nav from "./Nav";
 import { UserContext } from "../UserContext";
 import { useContext, useEffect, useState } from "react";
+import { doc, setDoc } from "firebase/firestore";
+import db from "../firebase";
 
 const Cart = () => {
   const { count, setCount } = useContext(UserContext);
   const [total, setTotal] = useState(0);
+
   const delFromCart = (delItem) => {
     //only delete the first occurance of an item
     let seenItem = false;
@@ -23,10 +26,18 @@ const Cart = () => {
         count: count.count - 1,
       };
     });
+    handleEdit();
   };
 
+  const handleEdit = async () => {
+    const docRef = doc(db, "users", "cart");
+    const payload = { count: count.count};
+
+    setDoc(docRef, payload);
+  };
+
+
   useEffect(() => {
-    console.log(count); //when the item list is updated calculate a new total
     const newTotal = count.items.reduce((accumulator, object) => {
       return accumulator + object.price;
     }, 0);
